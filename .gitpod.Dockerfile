@@ -184,3 +184,9 @@ PS1='\[]0;\u \w\]\[[01;32m\]\u\[[00m\] \[[01;34m\]\w\[[00m\]\[\e[0;38;5;19
 # Hack to pre-install bundled gems
 RUN echo "rvm use 2.7.3" >> ~/.bashrc
 RUN echo "rvm_silence_path_mismatch_check_flag=1" >> ~/.rvmrc
+
+# Install shopify-cli
+RUN /bin/bash -l -c "gem install shopify-cli"
+RUN sudo apt-get install ruby-dev -y
+RUN wget  -P . "https://github.com/Shopify/shopify-cli/releases/download/v2.1.0/shopify-cli-2.1.0.deb"
+RUN sudo apt install ./shopify-cli-2.1.0.deb
